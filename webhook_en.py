@@ -16,7 +16,7 @@ print(f"• {Fore.YELLOW}'{Style.RESET_ALL}{Fore.CYAN}§home{Style.RESET_ALL}{Fo
 
 def commandes(msg):
 	"""
-	Detect in the input is a command and execute the command.
+	Detect if the input is a command and execute the command.
 	:Param msg: str
 	:Out None:
 	"""
@@ -117,7 +117,7 @@ def main():
 	while True:
 		msg = input(f"‣ {Fore.YELLOW}Message:{Style.RESET_ALL} ")
 		commandes(msg)
-		code=requests.post(webhook_link, headers={"Content-Type": "application/json"}, json={"username": f"{name}", "content": f"{msg}"})
+		code = requests.post(webhook_link, headers={"Content-Type": "application/json"}, json={"username": f"{name}", "content": f"{msg}"})
 		if code.status_code == 204:
 			print(f"{Fore.GREEN}-> Message sent ✅{Style.RESET_ALL}")
 		else:
