@@ -1,4 +1,7 @@
-# Fait par Minixos
+# Ma façons de faire est sans doutes horrible car :
+# 1. J'ai commencé le Python et à coder en général il y a quelques mois.
+# 2. C'est la première fois que j'utilise Github.
+# -- Minixos
 
 import requests
 from os.path import exists
@@ -20,7 +23,10 @@ def commandes(msg):
 	:Param msg: str
 	:Out None:
 	"""
-
+	
+	if not(len(msg) > 0):
+		return None
+	
 	# Toutes les commandes commencent par '§'
 	if not(msg[0] == "§"):
 			return None
@@ -117,7 +123,7 @@ def main():
 	while True:
 		msg = input(f"‣ {Fore.YELLOW}Message:{Style.RESET_ALL} ")
 		commandes(msg)
-		code=requests.post(webhook_link, headers={"Content-Type": "application/json"}, json={"username": f"{name}", "content": f"{msg}"})
+		code = requests.post(webhook_link, headers={"Content-Type": "application/json"}, json={"username": f"{name}", "content": f"{msg}"})
 		if code.status_code == 204:
 			print(f"{Fore.GREEN}-> Message envoyé ✅{Style.RESET_ALL}")
 		else:
